@@ -44,7 +44,7 @@ import processing.core.PImage;
 public class RainGame extends PApplet {
     static final int WIDTH = 600;
     static final int HEIGHT = 600;
-
+    int positionY = 42;
     int score = 0;
     int bucketWidth = 50;
     int bucketHeight;
@@ -60,14 +60,22 @@ public class RainGame extends PApplet {
 
     @Override
     public void setup() {
-
+    bucket = loadImage("images/bucket.png");
+    bucket.resize(HEIGHT,WIDTH);
     }
 
     @Override
     public void draw() {
-
+    background(252,3,177);
+    if(mousePressed) {
+	println("Mouse’s x-position: " + mouseX + "\n" + "Mouse’s y-position: " + mouseY + "\n");
+                     }  
+    
+   
+    fill(79,183,247);
+    stroke(0,0,0);
+    ellipse(301,positionY,20,20);
     }
-
     static public void main(String[] args) {
         PApplet.main(RainGame.class.getName());
     }

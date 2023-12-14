@@ -96,9 +96,9 @@ public class Houses {
 		void drawPointyRoof() {
 			
 			rob.turn(45);
-		rob.move(15);
+		rob.move(20);
 		rob.turn(90);
-		rob.move(15);
+		rob.move(20);
 		rob.turn(45);
 		}
 		
