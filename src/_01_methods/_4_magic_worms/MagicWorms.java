@@ -30,10 +30,10 @@ import processing.core.PApplet;
  *    "red value", and i as the "green value" for some extra color coolness.
  */
 public class MagicWorms extends PApplet {
-    static final int WIDTH = 600;
-    static final int HEIGHT = 400;
-    int positionX = 0;
-    int positionY = 0;
+    static final int WIDTH = 1000;
+    static final int HEIGHT = 800;
+    float positionX = 0;
+    float positionY = 0;
 
     @Override
     public void settings() {
@@ -45,17 +45,23 @@ public class MagicWorms extends PApplet {
     public void setup() {
     	 background(0,0,0);
     }
-
+   int circles = 500;
     @Override
     public void draw() {
-       for(int i = 0; i<=300;i++)
-    	fill(252,2,174);
-    	ellipse(positionX,positionY,10,10);
-    	positionX+=1;
-    	positionY+=1;
+       makeMagical();
+    	for(int i = 0; i<=circles;i++) {
+    	positionX = getWormX(i);
+     	 positionY = getWormY(i);
+    	   fill(frameCount,i,174);
     	
+       ellipse(positionX,positionY,10,10);
+       }
+    	 if(mousePressed) {
+    			println("Mouse’s x-position: " + mouseX + "\n" + "Mouse’s y-position: " + mouseY + "\n");
+    			circles+=1;
+    	 }  
+    	 
     	
-      
     }
 
     static public void main(String[] args) {

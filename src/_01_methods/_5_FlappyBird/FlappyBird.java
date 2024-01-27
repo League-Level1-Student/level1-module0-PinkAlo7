@@ -18,7 +18,13 @@ public class FlappyBird extends PApplet {
 
     @Override
     public void draw() {
-        
+        background(52,222,235);
+        fill(235,52,213);
+        stroke(0,0,0);
+        ellipse(594,50,20,20);
+        if(mousePressed) {
+			println("Mouse’s x-position: " + mouseX + "\n" + "Mouse’s y-position: " + mouseY + "\n");
+	 }  
     }
 
     static public void main(String[] args) {
