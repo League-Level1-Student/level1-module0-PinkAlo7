@@ -13,6 +13,7 @@ public class FlappyBird extends PApplet {
 	int gravity = 1;
 	int X = 800;
 	int pipeGap = 60;
+	boolean isGameOver = false;
 	Random number = new Random();
 	int upperPipeHeight = (int) random(100, 400);
 	int lowerY = pipeGap + upperPipeHeight;
@@ -29,25 +30,45 @@ public class FlappyBird extends PApplet {
 
 	@Override
 	public void draw() {
-		background(52, 222, 235);
-		positionY += birdVelocity;
-		fill(235, 52, 213);
-		stroke(0, 0, 0);
-		ellipse(positionX, positionY, 20, 20);
-		birdVelocity += gravity;
-		fill(10, 166, 80);
-		stroke(0, 0, 0);
-		rect(X, 0, 60, upperPipeHeight);
-		fill(10, 166, 80);
-		stroke(0, 0, 0);
-		rect(X, lowerY, 60, 350);
-		teleportPipes();
-
-		if (mousePressed) {
-			println("Mouse’s x-position: " + mouseX + "\n" + "Mouse’s y-position: " + mouseY + "\n");
-
+		
+		if(positionY >= 540 || intersectsPipes() == true) {
+		isGameOver = true;
 		}
+		else {
+			isGameOver = false;
+		}
+		if(isGameOver == true)	 {
+		background(0,0,0);
+		text("GAME OVER");
+		}
+		
+		else {
+			background(52, 222, 235);
+			positionY += birdVelocity;
+			fill(235, 52, 213);
+			stroke(0, 0, 0);
+			ellipse(positionX, positionY, 20, 20);
+			birdVelocity += gravity;
+			fill(10, 166, 80);
+			stroke(0, 0, 0);
+			rect(X, 0, 60, upperPipeHeight);
+			fill(10, 166, 80);
+			stroke(0, 0, 0);
+			rect(X, lowerY, 60, 350);
+			teleportPipes();
+	        fill(94,98,102);
+	        stroke(0,0,0);
+			rect(0,540,800,60);
+			if (mousePressed) {
+				println("Mouse’s x-position: " + mouseX + "\n" + "Mouse’s y-position: " + mouseY + "\n");
+
+			}
+		}
+		
+		
+			
 	}
+	
 
 	public void mousePressed() {
 		birdVelocity = -9;
@@ -67,7 +88,7 @@ public class FlappyBird extends PApplet {
 	boolean intersectsPipes() {
 		if (positionY < upperPipeHeight && positionX > X && positionX < (X + 60)) {
 			return true;
-		} else if (positionY > lowerPipeTop && positionX > X && positionX < (X + 60)) {
+		} else if (positionY > lowerY && positionX > X && positionX < (X + 60)) {
 			return true;
 		} else {
 			return false;
