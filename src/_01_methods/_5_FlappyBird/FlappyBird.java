@@ -12,11 +12,12 @@ public class FlappyBird extends PApplet {
 	int birdVelocity = -9;
 	int gravity = 1;
 	int X = 800;
-	int pipeGap = 60;
+	int pipeGap = 80;
 	boolean isGameOver = false;
 	Random number = new Random();
 	int upperPipeHeight = (int) random(100, 400);
 	int lowerY = pipeGap + upperPipeHeight;
+	int score = 0;
 
 	@Override
 	public void settings() {
@@ -30,18 +31,20 @@ public class FlappyBird extends PApplet {
 
 	@Override
 	public void draw() {
-		
-		if(positionY >= 540 || intersectsPipes() == true) {
-		isGameOver = true;
-		}
-		else {
+
+		if (positionY >= 540 || intersectsPipes() == true) {
+			isGameOver = true;
+		} else {
 			isGameOver = false;
 		}
-		if(isGameOver == true)	 {
-		background(0,0,0);
-		text("GAME OVER");
+		if (isGameOver == true) {
+			background(0, 0, 0);
+			fill(173,34,29);
+			textSize(90);
+			text("GAME OVER",120,275);
 		}
-		
+	
+
 		else {
 			background(52, 222, 235);
 			positionY += birdVelocity;
@@ -56,22 +59,23 @@ public class FlappyBird extends PApplet {
 			stroke(0, 0, 0);
 			rect(X, lowerY, 60, 350);
 			teleportPipes();
-	        fill(94,98,102);
-	        stroke(0,0,0);
-			rect(0,540,800,60);
-			if (mousePressed) {
-				println("Mouse’s x-position: " + mouseX + "\n" + "Mouse’s y-position: " + mouseY + "\n");
-
-			}
-		}
-		
-		
+			fill(94, 98, 102);
+			stroke(0, 0, 0);
+			rect(0, 540, 800, 60);
+			fill(0,0,0);
+			text("Your score is: " + score, 20,20);
 			
+			
+								
+			
+		}
+
 	}
-	
 
 	public void mousePressed() {
-		birdVelocity = -9;
+		birdVelocity = -7;
+		println("Mouse’s x-position: " + mouseX + "\n" + "Mouse’s y-position: " + mouseY + "\n");
+
 	}
 
 	public void teleportPipes() {
@@ -81,21 +85,20 @@ public class FlappyBird extends PApplet {
 			X = 800;
 			upperPipeHeight = (int) random(100, 400);
 			lowerY = upperPipeHeight + pipeGap;
+			score +=1;
 		}
 
 	}
 
 	boolean intersectsPipes() {
-		if (positionY < upperPipeHeight && positionX > X && positionX < (X + 60)) {
+		if (positionY < upperPipeHeight && positionX > X && positionX < (X + 80)) {
 			return true;
-		} else if (positionY > lowerY && positionX > X && positionX < (X + 60)) {
+		} else if (positionY > lowerY && positionX > X && positionX < (X + 80)) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-
-	
 
 	static public void main(String[] args) {
 		PApplet.main(FlappyBird.class.getName());
