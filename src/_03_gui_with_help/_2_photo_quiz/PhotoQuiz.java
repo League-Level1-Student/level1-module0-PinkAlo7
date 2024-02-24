@@ -48,7 +48,7 @@ public class PhotoQuiz {
 		// 9. remove the component from the quiz window (you may not see the
 		// effect of this until step 12)
         
-		// 10. find another image and create it (might take more than one line
+		// 10. find lanother image and create it (might take more than one line
 		// of code)
          String J = "https://www.citypng.com/public/uploads/preview/-11599507037yjn7fbu05s.png";
 		// 11. add the second image to the quiz window
