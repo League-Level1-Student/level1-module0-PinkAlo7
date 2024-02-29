@@ -28,10 +28,11 @@ public class PhotoQuiz {
 		// “Copy Image Address” )
         String CB = "https://www.crackerbarrel.com/-/jssmedia/CrackerBarrel/Newsroom/Articles/2020/Copy-of-NEW_CB_Logo.png?rev=506a8a949fbd4cfd85ae8cb68cad7e6d";
 		// 2. create a variable of type "Component" that will hold your image
-        Component crackBar;
+    Component crackBar;
 		// 3. use the "createImage()" method below to initialize your Component
           crackBar = createImage(CB);
 		// 4. add the image to the quiz window
+          quizWindow.add(crackBar);
 		// 5. call the pack() method on the quiz window
         quizWindow.pack();
 		// 6. ask a question that relates to the image
@@ -39,26 +40,29 @@ public class PhotoQuiz {
 		// 7. print "CORRECT" if the user gave the right answer
         if(biscuits.equalsIgnoreCase( "Cracker barrel")) {
         	 System.out.println("CORRECT");
+        	 JOptionPane.showMessageDialog(null, "Good job! You got it right!");
         }
         else {
         	System.out.println("INCORRECT");
+        	JOptionPane.showMessageDialog(null ,"Nope. Sorry, that's not the answer.");
         }
 		// 8. print "INCORRECT" if the answer is wrong
         
 		// 9. remove the component from the quiz window (you may not see the
 		// effect of this until step 12)
-        
-		// 10. find lanother image and create it (might take more than one line
+        quizWindow.remove(crackBar);
+		// 10. find another image and create it (might take more than one line
 		// of code)
          String J = "https://www.citypng.com/public/uploads/preview/-11599507037yjn7fbu05s.png";
 		// 11. add the second image to the quiz window
         Component Joker;
         Joker = createImage(J);
+        quizWindow.add(Joker);
      
 		// 12. pack the quiz window
-        quizWindow.pack();
+       quizWindow.pack();
 		// 13. ask another question
-        String human = JOptionPane.showInputDialog("I walk with 4 legs at morning, 2 legs in the middly of the day, and 3 legs at night. What am I?");
+        String human = JOptionPane.showInputDialog("I walk with 4 legs at morning, 2 legs in the middle of the day, and 3 legs at night. What am I?");
 		// 14+ check answer, say if correct or incorrect, etc.
      if(human.equalsIgnoreCase(human)) {
     	 System.out.println("CORRECT");
