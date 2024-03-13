@@ -91,6 +91,7 @@ public class BodyPartQuiz {
 		else {
 			JOptionPane.showMessageDialog(null,"Nope. Sorry, that was not the correct answer.");
 			scoreBoard();
+			showNextImage();
 		}
 		showNextImage();
 		String guessSofia = JOptionPane.showInputDialog("Who is this person?");
@@ -102,6 +103,7 @@ public class BodyPartQuiz {
 		}
 		else {
 			JOptionPane.showMessageDialog(null, "Nope. Sorry, that was not the correct answer.");
+			scoreBoard();
 			showNextImage();
 		}
 
@@ -161,6 +163,7 @@ public class BodyPartQuiz {
 		imageLabel = loadImage(seventhImage);
 		imageList.add(imageLabel);
 		imageLabel = loadImage(eighthImage);
+		imageList.add(imageLabel);
 
 	}
 
